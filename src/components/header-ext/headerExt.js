@@ -1,4 +1,4 @@
-const HeaderExt = () => {
+const HeaderExt = (props) => {
    
     const logoImg = './img/svg/Beans_logo.svg';
 
@@ -20,7 +20,7 @@ const HeaderExt = () => {
                         </div>
                     </div>
                     <div className="button_more">
-                        <button className="more">More</button>
+                        <button className="more" onClick={() => props.onUpdatePage('2')} >More</button>
                     </div>
             </div>
 

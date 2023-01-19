@@ -444,29 +444,13 @@ html{
 .header__list {
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .header__item {
     margin-right: 40px;
+   
 }
-
-.header__link {
-    font-family: 'Merienda';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 17px;
-    color: white;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    cursor: pointer;
-    border: 0;
-    background: transparent;
-}
-
-.header__link:hover, .header__link:focus, .header__link:active {
-    opacity: .75;
-}  
 
 .header__wrapper_add {
     display: flex;
@@ -519,6 +503,10 @@ html{
     line-height: 20px;
     color: #FFFFFF;
 }
+
+.more:hover {
+    opacity: .75;
+}  
 
 .btn_next:hover{
     box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.3);
@@ -658,13 +646,12 @@ html{
     margin: auto;
 }
 
-.footer__link {
+.menu__link {
     font-family: 'Merienda';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 17px;
-    color: black;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     cursor: pointer;
@@ -672,7 +659,7 @@ html{
     background: transparent;
 }
 
-.footer__link:hover, .footer__link:focus, .footer__link:active {
+.menu__link:hover, .menu__link:focus, .menu__link:active {
     opacity: .75;
 }  
 

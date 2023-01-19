@@ -22,6 +22,7 @@ class DBService {
   ]`;
 
   getDBCofee = (count = 9) => {
+    // Регулирование вывода числа карт на страницу
     if (count > 9) {
       count = 9
     } 

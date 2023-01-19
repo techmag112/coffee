@@ -1,5 +1,6 @@
 const Footer = (props) => {
-    
+    const logoImg = './img/svg/coffee-beans_black.svg';
+ 
     return (
         <>
                 <div className="footer_main">
@@ -7,17 +8,9 @@ const Footer = (props) => {
                         <nav className="footer__nav">
                             <ul className="footer__list">
                                 <li className="footer__logo">
-                                    <img src="./img/svg/coffee-beans_black.svg" alt="Logo Coffee house" className="footer__logo_pic"/>    
+                                    <img src={logoImg} alt="Logo Coffee house" className="footer__logo_pic"/>    
                                 </li>
-                                <li className="footer__item">
-                                    <button type="button" className="footer__link" onClick={() => props.onUpdatePage('1')}>Coffee house</button>
-                                </li>
-                                <li className="footer__item">
-                                    <button type="button" className="footer__link" onClick={() => props.onUpdatePage('2')}>Our coffee</button>
-                                </li>
-                                <li className="footer__item">
-                                     <button type="button" className="footer__link" onClick={() => props.onUpdatePage('3')}>For your pleasure</button>
-                                </li>
+                                    {props.renderMenu()}
                             </ul>
                         </nav>
                         <div className="footer_logo_bottom">
