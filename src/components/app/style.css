@@ -429,7 +429,7 @@ html{
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: left;
-    height: 150px;
+    height: 100px;
 }
 
 .header__nav {
@@ -450,7 +450,7 @@ html{
     margin-right: 40px;
 }
 
-.header__link1 {
+.header__link {
     font-family: 'Merienda';
     font-style: normal;
     font-weight: 400;
@@ -460,41 +460,11 @@ html{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     cursor: pointer;
+    border: 0;
+    background: transparent;
 }
 
-.header__link1:hover, .header__link1:focus, .header__link1:active {
-    opacity: .75;
-}  
-
-.header__link2 {
-    font-family: 'Merienda';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 17px;
-    color: white;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.header__link2:hover, .header__link2:focus, .header__link2:active {
-    opacity: .75;
-}  
-
-.header__link3 {
-    font-family: 'Merienda';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 17px;
-    color: white;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.header__link3:hover, .header__link3:focus, .header__link3:active {
+.header__link:hover, .header__link:focus, .header__link:active {
     opacity: .75;
 }  
 
@@ -698,6 +668,8 @@ html{
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     text-decoration: none;
     cursor: pointer;
+    border: 0;
+    background: transparent;
 }
 
 .footer__link:hover, .footer__link:focus, .footer__link:active {
@@ -727,7 +699,7 @@ html{
 .wrapper_main {
     display: flex;
     flex-direction: row;
-   
+    margin-top: 50px;
 }
 
 .section_photo {

@@ -1,4 +1,4 @@
-const Footer = () => {
+const Footer = (props) => {
     
     return (
         <>
@@ -10,13 +10,13 @@ const Footer = () => {
                                     <img src="./img/svg/coffee-beans_black.svg" alt="Logo Coffee house" className="footer__logo_pic"/>    
                                 </li>
                                 <li className="footer__item">
-                                    <a href="/" className="footer__link">Coffee house</a>
+                                    <button type="button" className="footer__link" onClick={() => props.onUpdatePage('1')}>Coffee house</button>
                                 </li>
                                 <li className="footer__item">
-                                    <a href="/" className="footer__link">Our coffee</a>
+                                    <button type="button" className="footer__link" onClick={() => props.onUpdatePage('2')}>Our coffee</button>
                                 </li>
                                 <li className="footer__item">
-                                    <a href="/" className="footer__link">For your pleasure</a>
+                                     <button type="button" className="footer__link" onClick={() => props.onUpdatePage('3')}>For your pleasure</button>
                                 </li>
                             </ul>
                         </nav>

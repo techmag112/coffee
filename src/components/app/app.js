@@ -36,32 +36,17 @@ class App extends Component {
         
     }
     
-    componentDidMount() {
-        this.numberPage = document.querySelector('.header__list');
-        this.numberPage.addEventListener('click', this.updatePage)
-    } 
+   // componentDidMount() {
+   //     console.log('mount')
+        //this.numberPage = document.querySelector('.header__list');
+        //this.numberPage
+   //     window.addEventListener('click', this.updatePage, false)
+    //} 
 
-    componentWillUnmount() {
-        this.numberPage.removeEventListener('click', this.updatePage)
-    }
-
-    updatePage = (event) => {
-         if (event.target.classList.contains('header__link1')) { 
-             this.setState({
-                 pageNow: 1  
-             });
-         } 
-         if (event.target.classList.contains('header__link2')) { 
-             this.setState({
-                pageNow: 2
-            })  
-          } 
-        if (event.target.classList.contains('header__link3')) { 
-             this.setState({
-                 pageNow: 3  
-             });
-        } 
-    }
+    //componentWillUnmount() {
+     //   console.log('unmount')
+      //  window.removeEventListener('click', this.updatePage, false)
+    //}
 
     addFilter = (items, term, filter) => {
         let arr = [];
@@ -79,6 +64,15 @@ class App extends Component {
         }   
     }
 
+    onUpdatePage = (page) => {
+        switch (page) { 
+            case '2': this.setState({ pageNow: 2 });
+                      break;  
+            case '3': this.setState({ pageNow: 3 });
+                      break;                
+            default: this.setState({ pageNow: 1 });
+        }
+    }
    
     onUpdateSearch = (term) => {
         this.setState({term});
@@ -111,17 +105,19 @@ class App extends Component {
                 img = 'Main_bg.jpg'
         }
         const headerUrl = {
-                 background: `url(../img/${img})`,
-                 backgroundRepeat: 'no-repeat'
+                 background: `url(../img/${img})`
              }
+         // backgroundRepeat: 'no-repeat'    
         const headerTitle = pageNow > 1 ? <div className="header__logo_text">{title}</div> : null;
         const headerExt = pageNow === 1 ? <HeaderExt/> : null;
+
+        const styleFooter = pageNow > 1 ? {marginTop: '100px'} : null
 
         return (
             <div>
                 <header>
                      <div className="wrapper" style={headerUrl}>
-                         <Header pageNow = {pageNow} onUpdatePage={this.onUpdatePage}/>
+                         <Header onUpdatePage={this.onUpdatePage}/>
                          {headerTitle}
                          {headerExt}
                      </div>
@@ -133,24 +129,14 @@ class App extends Component {
                         <Section2 pageNow={pageNow} arr={visibleData} best={this.topbest}/>
                     </div>
                  </main>
-                <FooterHTML5 pageStatus = {this.state}/>
+                 <footer>
+                    <div className="wrapper__footer" style={styleFooter}>
+                        <Footer onUpdatePage={this.onUpdatePage}/>
+                    </div>
+                </footer>
             </div>
         )  
     } 
 }
-
-function FooterHTML5({pageStatus}) {
-    const {pageNow} = pageStatus;
-    const styleFooter = pageNow > 1 ? {marginTop: '100px'} : null
-   
-    return (
-      <footer>
-        <div className="wrapper__footer" style={styleFooter}>
-            <Footer/>
-        </div>
-      </footer>
-    )
-}
-
 		
 export default App;
