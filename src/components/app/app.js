@@ -6,6 +6,7 @@ import Section1 from '../section1/section1';
 import Section2 from '../section2/section2';
 import Footer from '../footer/footer';
 import FilterPanel from '../filter-panel/filterPanel';
+import DBService from '../services/DBService';
 
 import './style.css'; 
 
@@ -13,40 +14,23 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            pageNow: 1,
+            pageNow: '',
             term : '',
             filter: ''
         }
-        this.dbcoffee = [
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Brazil', price: 6.99, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Kenya', price: 9.99, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Columbia', price: 12, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Brazil', price: 8.3, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Brazil', price: 12.99, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Columbia', price: 10, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Brazil', price: 15.99, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Kenya', price: 7.5, urlimg: 'coffee-default.jpg'},
-           {kind: 'AROMISTICO Coffee', weight: 1, country: 'Kenya', price: 12, urlimg: 'coffee-default.jpg'}
-        ]
-        this.topbest = [
-            {kind: 'Solimo Coffee Beans 2 kg', price: 10.73, img: 'best01.jpg'},
-            {kind: 'Presto Coffee Beans 1 kgg', price: 15.99, img: 'best02.jpg'},
-            {kind: 'AROMISTICO Coffee 1 kg', price: 6.99, img: 'best03.jpg'}
-        ]
-        
+        this.dbcoffee = []
+        this.topbest = []
     }
     
-   // componentDidMount() {
-   //     console.log('mount')
-        //this.numberPage = document.querySelector('.header__list');
-        //this.numberPage
-   //     window.addEventListener('click', this.updatePage, false)
-    //} 
+    dbservice = new DBService()
 
-    //componentWillUnmount() {
-     //   console.log('unmount')
-      //  window.removeEventListener('click', this.updatePage, false)
-    //}
+    componentDidMount() {
+        // Загружаем базы при формировании DOM
+        this.topbest = this.dbservice.getBestKind()
+        // Прописываем номер страницы по умолчанию и делаем ререндинг компонент
+        this.setState({ pageNow: 1 })
+        this.dbcoffee = this.dbservice.getDBCofee()
+    } 
 
     addFilter = (items, term, filter) => {
         let arr = [];
@@ -64,6 +48,7 @@ class App extends Component {
         }   
     }
 
+    // Переключение черех меню между страницами
     onUpdatePage = (page) => {
         switch (page) { 
             case '2': this.setState({ pageNow: 2 });
@@ -74,10 +59,12 @@ class App extends Component {
         }
     }
    
+    // Обновить текст поиска
     onUpdateSearch = (term) => {
         this.setState({term});
     }
 
+    // Обновить фильтр по кнопкам
     onFilterSelect = (filter) => {
         if (this.state.filter === filter) {
             this.setState({
@@ -89,6 +76,7 @@ class App extends Component {
     
     render() {
        const {pageNow, term, filter} = this.state;  
+       // Оставить только видимые элементы базы кофе
        const visibleData = this.addFilter(this.dbcoffee, term, filter); 
        let img = '';
        let title = '';

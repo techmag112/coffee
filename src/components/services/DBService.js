@@ -16,10 +16,10 @@ class DBService {
   ]`;
 
   _topBestJSON = `[
-         {"kind": "Solimo Coffee Beans", "weight": 2, "price": 10.73, "urlimg": "best01.jpg"},
-         {"kind": "Presto Coffee Beans", "weight": 1, "price": 15.99, "urlimg": "best02.jpg"},
-         {"kind": "AROMISTICO Coffee", "weight": 1, "price": 6.99, "urlimg": "best03.jpg"},
-       ]`;
+    {"kind": "Solimo Coffee Beans 2 kg", "price": 10.73, "img": "best01.jpg"},
+    {"kind": "Presto Coffee Beans 1 kgg", "price": 15.99, "img": "best02.jpg"},
+    {"kind": "AROMISTICO Coffee 1 kg", "price": 6.99, "img": "best03.jpg"}
+  ]`;
 
   getDBCofee = (count = 9) => {
     if (count > 9) {
@@ -27,7 +27,6 @@ class DBService {
     } 
    // возврат базы магазина
     let arr = JSON.parse(this._coffeeJSON);
-    console.log('LOAD!', arr)
     return arr.slice(0, count);
   }
 
