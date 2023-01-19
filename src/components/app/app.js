@@ -55,6 +55,8 @@ class App extends Component {
                       break;  
             case '3': this.setState({ pageNow: 3 });
                       break;                
+            case '4': this.setState({ pageNow: 3 });
+                      break;  
             default: this.setState({ pageNow: 1 });
         }
     }
@@ -152,6 +154,12 @@ class App extends Component {
                 headerTitle = <div className="header__logo_text">{title}</div> 
                 styleFooter = {marginTop: '100px'} 
                 break;
+            case 4: 
+                img = 'coffee-shop.jpg';
+                title = 'Our Coffee';
+                headerTitle = <div className="header__logo_text">{title}</div> 
+                styleFooter = {marginTop: '100px'} 
+                break;
             default:
                 img = 'Main_bg.jpg'
                 headerExt = <HeaderExt  onUpdatePage={this.onUpdatePage}/>
@@ -162,7 +170,7 @@ class App extends Component {
          // backgroundRepeat: 'no-repeat'    
         
         return (
-            <div>
+            <div className="container">
                 <header>
                      <div className="wrapper" style={headerUrl}>
                          <Header  renderMenu={this.renderMenu}/>

@@ -29,14 +29,24 @@ const Section1 = (props) => {
             mainImg = './img/girl.jpg';
             photoBlock = <div className="section_photo">
                             <img src={mainImg} alt="Coffee" className="section_girl"/>
-                        </div>;
+                        </div>
             break;
-        default:
+        case 3:
             title = 'About our goods';
             mainImg = './img/coffee-cap.jpg';
             photoBlock = <div className="section_photo">
                             <img src={mainImg} alt="Coffee" className="section_girl"/>
-                        </div>;
+                        </div>
+            break;
+        default:
+            title = 'About it';
+            mainImg = './img/sort-aromistico.jpg';
+            photoBlock = <div className="section_photo">
+                            <img src={mainImg} alt="Coffee" className="section_girl"/>
+                        </div>    
+            textBody = `Country: Brasil
+                            Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            Price:  16.99$`;
     }
     
     return (
