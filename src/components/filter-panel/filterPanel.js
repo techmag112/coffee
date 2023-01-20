@@ -1,6 +1,6 @@
 const FilterPanel = (props) => {
     let switchFilter = null;
-    const line = props.pageNow > 1 ? <div className="shop_line"><img src="./img/svg/Line.svg" alt="Line" className="coffee_line"/></div> : null
+    const line = (props.pageNow === 2 || props.pageNow === 3) ? <div className="shop_line"><img src="./img/svg/Line.svg" alt="Line" className="coffee_line"/></div> : null
     if (props.pageNow === 2) {
         const buttonsData = [
             {name: 'Brazil'},

@@ -1,5 +1,5 @@
 const Section1 = (props) => {
-    const {pageNow} = props;
+    const {pageNow, country, price} = props;
     const logoImg = './img/svg/Beans_logo_black.svg';
     let title = '';
     let textBody = `Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
@@ -34,11 +34,7 @@ const Section1 = (props) => {
             photoBlock = <div className="section_photo">
                              <img src={mainImg} alt="Coffee" className="section_girl"/>
                          </div>    
-            textBody = `<p>Country: Brasil</p>
-                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                        <h1>Price:  16.99$<h1/>`
+            textBody = cardDetails(country, price)
             break;
         default:
             title = 'About Us';
@@ -72,5 +68,16 @@ const Section1 = (props) => {
     )
 }
 
+const cardDetails = (country, price) => {
+    return (
+        <>
+           <p className='card_details1'>Country: {country}</p>
+           <br/>
+           <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+           <br/>
+           <p className='card_details2'>Price: {price}$</p>
+        </>
+    )
+}
 
 export default Section1;

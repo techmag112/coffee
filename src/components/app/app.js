@@ -20,6 +20,8 @@ class App extends Component {
         }
         this.dbcoffee = []
         this.dbtop = []
+        this.currentCountry = ''
+        this.currentPrice = ''
     }
     
     dbservice = new DBService()
@@ -76,13 +78,19 @@ class App extends Component {
         }
     }
 
+    onCardSelected = (country, price) => {
+        this.currentCountry = country
+        this.currentPrice = price
+        this.setState({ pageNow: 4 })
+    }
+
     // Рендер карточек магазина
     renderShopCards = (arr) => {
         let cards = arr.map((item,index) => {
           const nameCoffee = `${item.kind} ${item.weight} kg`
           const img = `./img/${item.urlimg}`
           return (
-                  <div className="shop_card" key={index}>
+                  <div className="shop_card" key={index} onClick = {() => this.onCardSelected(item.country, item.price)}>
                       <img src={img} alt={item.kind} className="coffee_pic"/>
                       <div className="coffee_name">{nameCoffee}</div>
                       <div className="coffee_country">{item.country}</div>
@@ -158,7 +166,7 @@ class App extends Component {
                 img = 'coffee-shop.jpg';
                 title = 'Our Coffee';
                 headerTitle = <div className="header__logo_text">{title}</div> 
-                styleFooter = {marginTop: '100px'} 
+                //styleFooter = {marginTop: '100px'} 
                 break;
             default:
                 img = 'Main_bg.jpg'
@@ -179,7 +187,7 @@ class App extends Component {
                      </div>
                 </header>
                 <main>
-                    <Section1 pageNow={pageNow}/>
+                    <Section1 pageNow={pageNow} country={this.currentCountry} price={this.currentPrice} />
                     <div className="coffee_shop">
                         <FilterPanel 
                             pageNow = {pageNow} 
