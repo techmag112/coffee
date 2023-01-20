@@ -55,7 +55,7 @@ class App extends Component {
                       break;  
             case '3': this.setState({ pageNow: 3 });
                       break;                
-            case '4': this.setState({ pageNow: 3 });
+            case '4': this.setState({ pageNow: 4 });
                       break;  
             default: this.setState({ pageNow: 1 });
         }

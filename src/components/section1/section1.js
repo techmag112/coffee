@@ -14,16 +14,6 @@ const Section1 = (props) => {
     let classOffset = null;
      
     switch (pageNow) {
-        case 1:
-            title = 'About Us';
-            textBody += ` Now residence dashwoods she excellent you. Shade being under his bed her, Much
-                        read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant
-                        horrible but confined day end marriage. Eagerness furniture set preserved far
-                        recommend. Did even but nor are most gave hope. Secure active living depend son
-                        repair day ladies now.`;
-            classStyle = null;
-            classOffset = {marginTop: '50px'};
-            break;
         case 2:
             title = 'About our beans';
             mainImg = './img/girl.jpg';
@@ -38,15 +28,27 @@ const Section1 = (props) => {
                             <img src={mainImg} alt="Coffee" className="section_girl"/>
                         </div>
             break;
-        default:
+        case 4:
             title = 'About it';
             mainImg = './img/sort-aromistico.jpg';
             photoBlock = <div className="section_photo">
-                            <img src={mainImg} alt="Coffee" className="section_girl"/>
-                        </div>    
-            textBody = `Country: Brasil
-                            Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            Price:  16.99$`;
+                             <img src={mainImg} alt="Coffee" className="section_girl"/>
+                         </div>    
+            textBody = `<p>Country: Brasil</p>
+                        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h1>Price:  16.99$<h1/>`
+            break;
+        default:
+            title = 'About Us';
+            textBody += ` Now residence dashwoods she excellent you. Shade being under his bed her, Much
+                          read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant
+                          horrible but confined day end marriage. Eagerness furniture set preserved far
+                          recommend. Did even but nor are most gave hope. Secure active living depend son
+                          repair day ladies now.`;
+            classStyle = null;
+            classOffset = {marginTop: '50px'};
     }
     
     return (
