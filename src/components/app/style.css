@@ -659,7 +659,7 @@ html{
     background: transparent;
 }
 
-.menu__link:hover, .menu__link:focus, .menu__link:active {
+.menu__link:hover, .menu__link:focus, .menu__link:active, .active{
     opacity: .75;
 }  
 
@@ -765,7 +765,7 @@ html{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    
+    margin-top: 20px;
 }
 
 .wrapper_filter {
