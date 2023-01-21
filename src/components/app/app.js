@@ -125,7 +125,7 @@ const App = () => {
                                  style={color}
                                  onClick={() => onUpdatePage(`${index+1}`)}>
                                     {item.name}
-                                 </button>
+                    </button>
                 </li>
             )
         })
@@ -178,7 +178,11 @@ const App = () => {
                      </div>
                 </header>
                 <main>
-                    <Section1 pageNow={pageNow} country={currentCountry} price={currentPrice} />
+                    <Section1 
+                        pageNow={pageNow} 
+                        country={currentCountry} 
+                        price={currentPrice} 
+                    />
                     <div className="coffee_shop">
                         <FilterPanel 
                             pageNow = {pageNow} 
