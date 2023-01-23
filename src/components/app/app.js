@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import Header from '../header/header';
 import HeaderExt from '../header-ext/headerExt';
@@ -16,8 +16,8 @@ const App = () => {
     const [filter, setFilter] = useState('');
     const [dbtop, setDBtop] = useState([]);
     const [dbcoffee, setDBcoffee] = useState([]);
-    const [currentCountry, setCurrentCountry] = useState('');
-    const [currentPrice, setCurrentPrice] = useState('');
+    const currentCountry = useRef();
+    const currentPrice = useRef();
 
     // Загружаем базы из внешнего источника при первом формировании DOM
     useEffect(() => {
@@ -71,8 +71,10 @@ const App = () => {
     }
 
     const onCardSelected = (country, price) => {
-        setCurrentCountry(country);
-        setCurrentPrice(price);
+        // Используем хук Ref для хранения и передачи локальных данных межжду дочерними компонентами без ререндинга
+        currentCountry.current = country;
+        currentPrice.current = price;
+        // Запускаем ререндинг страницы 1 раз
         setPageNow(4);
     }
 
@@ -82,7 +84,7 @@ const App = () => {
           const nameCoffee = `${item.kind} ${item.weight} kg`
           const img = `./img/${item.urlimg}`
           return (
-                  <div className="shop_card" key={index} onClick = {() => onCardSelected(item.country, item.price)}>
+                  <div className="shop_card" key={index+100} onClick = {() => onCardSelected(item.country, item.price)}>
                       <img src={img} alt={item.kind} className="coffee_pic"/>
                       <div className="coffee_name">{nameCoffee}</div>
                       <div className="coffee_country">{item.country}</div>
@@ -98,7 +100,7 @@ const App = () => {
         const imgURL = `./img/${item.img}`
         const altBestTop = `Best Coffee ${index}`
         return (
-                <div className="footer_ext_best_card" key={index}>
+                <div className="footer_ext_best_card" key={index+200}>
                     <img src={imgURL} alt={altBestTop} className="best_coffee_pic"/>
                     <div className="coffee_name">{item.kind}</div>
                     <div className="coffee_price">{item.price}</div>
@@ -119,7 +121,7 @@ const App = () => {
             // Синхронизируем отображение выбора пунктов двух меню через доп класс css
             const activeButton = pageNow === index+1 ? 'menu__link active' : 'menu__link'
             return (
-                <li className="header__item" key={index}>
+                <li className="header__item" key={index+300}>
                     <button type="button" 
                                  className = {activeButton}
                                  style={color}
@@ -180,8 +182,8 @@ const App = () => {
                 <main>
                     <Section1 
                         pageNow={pageNow} 
-                        country={currentCountry} 
-                        price={currentPrice} 
+                        country={currentCountry.current} 
+                        price={currentPrice.current} 
                     />
                     <div className="coffee_shop">
                         <FilterPanel 
